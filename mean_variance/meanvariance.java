@@ -15,7 +15,7 @@ public class meanvariance {
         System.out.println("Variance of marks: " + variance);
     }
 
-    // Method to get valid number of marks
+    // Getting valid number of marks
     public static int getNumberOfMarks(Scanner scanner) {
         int number;
         System.out.print("Enter the number of marks: ");
@@ -59,7 +59,7 @@ public class meanvariance {
         return sum / marks.length;
     }
 
-    // Method to calculate population variance 
+    // Method to calculate variance 
     public static double calculateVariance(double[] marks, double mean) {
         double sumSquaredDiff = 0;
         for (int i = 0; i < marks.length; i++) {
