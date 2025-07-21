@@ -14,6 +14,8 @@ public class meanvariance {
 
         System.out.println("Mean of marks: " + mean);
         System.out.println("Variance of marks: " + variance);
+        
+        sc.close();
     }
 
     // This method asks user to enter a positive number and keeps asking until user enters valid input
@@ -25,10 +27,10 @@ public class meanvariance {
                 if (value > 0) {
                     return value;
                 } else {
-                    System.out.println("Invalid input. Please enter a positive integer.");
+                    System.out.println("Invalid input. Please enter a positive number.");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a valid integer.");
+                System.out.println("Invalid input. Please enter a valid number.");
                 sc.next();
             }
         }
@@ -57,7 +59,7 @@ public class meanvariance {
                     System.out.println("Invalid input. Mark must be between " + min + " and " + max + ".");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a valid integer.");
+                System.out.println("Invalid input. Please enter a valid number.");
                 sc.next();
             }
         }
