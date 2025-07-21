@@ -8,10 +8,10 @@ public class highestlowest
         Scanner sc = new Scanner(System.in);
 
         int numberOfMarks = readPositiveInt(sc, "Enter the number of marks: ");
-        int[] marks = getMarks(sc, numberOfMarks);
+        double[] marks = getMarks(sc, numberOfMarks);
 
-        int highest = findHighest(marks);
-        int lowest = findLowest(marks);
+        double highest = findHighest(marks);
+        double lowest = findLowest(marks);
 
         System.out.println("Highest mark: " + highest);
         System.out.println("Lowest mark: " + lowest);
@@ -38,8 +38,8 @@ public class highestlowest
     }
 
     // This method reads all marks from user and stores them in an array
-    public static int[] getMarks(Scanner sc, int numberOfMarks) {
-        int[] marks = new int[numberOfMarks];
+    public static double[] getMarks(Scanner sc, int numberOfMarks) {
+        double[] marks = new double[numberOfMarks];
 
         for (int i = 0; i < numberOfMarks; i++) {
             marks[i] = readIntInRange(sc, "Enter mark #" + (i + 1) + ": ", 0, 30);
@@ -49,11 +49,11 @@ public class highestlowest
     }
 
     // This method asks user to enter a mark between min and max and checks if valid
-    public static int readIntInRange(Scanner sc, String message, int min, int max) {
+    public static double readIntInRange(Scanner sc, String message, int min, int max) {
         while (true) {
             System.out.print(message);
             try {
-                int value = sc.nextInt();
+                double value = sc.nextInt();
                 if (value >= min && value <= max) {
                     return value;
                 } else {
@@ -67,8 +67,8 @@ public class highestlowest
     }
 
     // This method finds the highest mark in the array
-    public static int findHighest(int[] marks) {
-        int highest = marks[0];
+    public static double findHighest(double[] marks) {
+        double highest = marks[0];
         for (int i = 1; i < marks.length; i++) {
             if (marks[i] > highest) {
                 highest = marks[i];
@@ -78,8 +78,8 @@ public class highestlowest
     }
 
     // This method finds the lowest mark in the array
-    public static int findLowest(int[] marks) {
-        int lowest = marks[0];
+    public static double findLowest(double[] marks) {
+        double lowest = marks[0];
         for (int i = 1; i < marks.length; i++) {
             if (marks[i] < lowest) {
                 lowest = marks[i];

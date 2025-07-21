@@ -1,12 +1,13 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class meanvariance {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        int numberOfMarks = getNumberOfMarks(scanner);
-        double[] marks = getMarks(scanner, numberOfMarks);
+        int numberOfMarks = readPositiveInt(sc, "Enter the number of marks: ");
+        double[] marks = getMarks(sc, numberOfMarks);
 
         double mean = calculateMean(marks);
         double variance = calculateVariance(marks, mean);
@@ -15,39 +16,51 @@ public class meanvariance {
         System.out.println("Variance of marks: " + variance);
     }
 
-    // Getting valid number of marks
-    public static int getNumberOfMarks(Scanner scanner) {
-        int number;
-        System.out.print("Enter the number of marks: ");
-        number = scanner.nextInt();
-
-        while (number <= 0) {
-            System.out.println("Invalid input. Please enter a positive integer.");
-            System.out.print("Enter the number of marks: ");
-            number = scanner.nextInt();
+    // This method asks user to enter a positive number and keeps asking until user enters valid input
+    public static int readPositiveInt(Scanner sc, String message) {
+        while (true) {
+            System.out.print(message);
+            try {
+                int value = sc.nextInt();
+                if (value > 0) {
+                    return value;
+                } else {
+                    System.out.println("Invalid input. Please enter a positive integer.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+                sc.next();
+            }
         }
-
-        return number;
     }
 
-    // Method to get valid marks using an array
-    public static double[] getMarks(Scanner scanner, int count) {
-        double[] marks = new double[count];
+        // This method reads all marks from user and stores them in an array
+    public static double[] getMarks(Scanner sc, int numberOfMarks) {
+        double[] marks = new double[numberOfMarks];
 
-        for (int i = 0; i < count; i++) {
-            System.out.print("Enter mark " + (i + 1) + ": ");
-            double mark = scanner.nextDouble();
-
-            while (mark < 0 || mark > 30) {
-                System.out.println("Invalid input. Mark must be between 0 and 30.");
-                System.out.print("Enter mark " + (i + 1) + " again: ");
-                mark = scanner.nextDouble();
-            }
-
-            marks[i] = mark;
+        for (int i = 0; i < numberOfMarks; i++) {
+            marks[i] = readIntInRange(sc, "Enter mark #" + (i + 1) + ": ", 0, 30);
         }
 
         return marks;
+    }
+    
+        // This method asks user to enter a mark between min and max and checks if valid
+    public static double readIntInRange(Scanner sc, String message, int min, int max) {
+        while (true) {
+            System.out.print(message);
+            try {
+                double value = sc.nextInt();
+                if (value >= min && value <= max) {
+                    return value;
+                } else {
+                    System.out.println("Invalid input. Mark must be between " + min + " and " + max + ".");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+                sc.next();
+            }
+        }
     }
 
     // Method to calculate mean
