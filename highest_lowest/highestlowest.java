@@ -29,10 +29,10 @@ public class highestlowest
                 if (value > 0) {
                     return value;
                 } else {
-                    System.out.println("Invalid input. Please enter a positive integer.");
+                    System.out.println("Invalid input. Please enter a positive number.");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a valid integer.");
+                System.out.println("Invalid input. Please enter a valid number.");
                 sc.next();
             }
         }
@@ -61,7 +61,7 @@ public class highestlowest
                     System.out.println("Invalid input. Mark must be between " + min + " and " + max + ".");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a valid integer.");
+                System.out.println("Invalid input. Please enter a valid number.");
                 sc.next();
             }
         }
